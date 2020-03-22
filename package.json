@@ -2,10 +2,19 @@
   "name": "insta-pup",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Claire Miller",
+    "email": "clairetmiller4@gmail.com"
+  },
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "start": "node ./bin/www",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "run-p backend frontend",
+    "backend": "nodemon ./bin/www --watch .",
+    "frontend": "vue-cli-service serve",
+    "lint": "run-s lint:*",
+    "lint:eslint": "eslint --fix --ext .js,.vue .",
+    "lint:prettier": "prettier --write --list-different \"**/*.{js,json,vue,html}\""
   },
   "dependencies": {
     "core-js": "^3.6.4",
@@ -15,24 +24,18 @@
     "@vue/cli-plugin-babel": "~4.2.0",
     "@vue/cli-plugin-eslint": "~4.2.0",
     "@vue/cli-service": "~4.2.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-standard": "^5.1.2",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^6.1.2",
+    "nodemon": "^2.0.2",
+    "npm-run-all": "^4.1.5",
     "vue-template-compiler": "^2.6.11"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
   },
   "browserslist": [
     "> 1%",
